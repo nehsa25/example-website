@@ -1,0 +1,44 @@
+<div class="page">
+  <div class="container">
+    <mat-stepper color="accent" headerPosition="top" labelPosition="bottom" linear="true" #stepper>
+      <mat-step [stepControl]="formGroup1">
+        <form [formGroup]="formGroup1">
+          <ng-template matStepLabel>Choose Time</ng-template>
+          <div>
+            <div>
+              <h1>Dr. Harding is available on the following days for annual physicals.</h1>
+              <h4>Choose a date and time below!</h4>
+            </div>
+            <div class="date-grid">
+              <div>
+                <ul class="month-list">
+                  <li *ngFor="let month of months; index as i; track month">
+                    <button [class.selected-month]="i == selectedMonth" [disabled]="!months_enabled.includes(i)"
+                      (click)="selectMonth(i)">{{month}}</button>
+                  </li>
+                </ul>
+              </div>
+              <div class="time-container">
+                <ul class="time-list">
+                  <li class="time-item" *ngFor="let t of timeItems; track t">
+                    <button matStepperNext *ngIf="t.month == selectedMonth+1"
+                      [class.selected-time]="t.full == selectedTime?.full" (click)=setTime(t)
+                      mat-stroked-button>{{getDayAbbreivation(t.day)}},
+                      {{getMonthAbbreviation(t.month)}} {{t.day}}, {{t.year}} {{t.hour}}:{{t.minute}}</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="formGroup2">
+        <form [formGroup]="formGroup2">
+          <ng-template matStepLabel>Confirm</ng-template>
+          <h1>You have selected the following appointment:</h1>
+          <h2>{{selectedTime?.month}} / {{selectedTime?.day}} / {{selectedTime?.year}} &#64; {{selectedTime?.hour}}</h2>
+        </form>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</div>

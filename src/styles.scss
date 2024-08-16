@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: Georgia, serif;
+    margin: 0px;
+    background-color:   #C8D6C5;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: .5rem 0 0 0;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: .5rem 0 0 0;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin: .5rem 0 0 0;
+}
+
+h4 {
+    font-size: 1.2rem;
+    margin: .5rem 0 0 0;
+}
